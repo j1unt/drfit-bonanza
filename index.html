@@ -1,1 +1,29 @@
-<img src="main_loading_screen.jpg" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assetto Corsa Server Assets</title>
+</head>
+<body>
+    <h1>Yon's Drift Bonanza Image:</h1>
+    <!-- Replace 'images/loading_screen.png' with the actual path to your image -->
+    <img src="main_loading_screen.jpg" alt="Server Loading Screen">
+    <p>The direct hotlink for the image is: <code id="imageLink"></code></p>
+
+    <script>
+        // This script dynamically sets the image link for display
+        document.addEventListener('DOMContentLoaded', () => {
+            const repoName = window.location.pathname.split('/')[1]; // Gets 'your-repo-name' or empty string if root
+            const username = window.location.hostname.split('.')[0]; // Gets 'yourusername'
+            let imageUrl = '';
+
+            if (repoName === '') { // If repo is yourusername.github.io
+                imageUrl = `https://${username}.github.io/images/loading_screen.png`;
+            } else { // If repo is yourusername.github.io/your-repo-name
+                imageUrl = `https://${username}.github.io/${repoName}/images/loading_screen.png`;
+            }
+            document.getElementById('imageLink').textContent = imageUrl;
+        });
+    </script>
+</body>
+</html>
